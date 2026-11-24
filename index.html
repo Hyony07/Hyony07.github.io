@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haya Alothman · Software engineering student</title>
+  <meta name="description" content="I turn real problems into clear designs, and I'm learning to build them for web and mobile.">
+
+  <!-- Link preview card (WhatsApp, LinkedIn) -->
+  <meta property="og:title" content="Haya Alothman · Software engineering student">
+  <meta property="og:description" content="I turn real problems into clear designs, and I'm learning to build them for web and mobile.">
+  <meta property="og:url" content="https://hyony07.github.io/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== 1. Colors: one calm mauve, five shades ===== */
+    :root {
+      --bg:      #F8F6FA;  /* page background */
+      --surface: #E8E1EF;  /* cards, dividers */
+      --soft:    #A893BF;  /* decoration only, never for text */
+      --accent:  #5B4277;  /* buttons and highlights */
+      --text:    #2A2133;  /* all text */
+    }
+
+    /* ===== 2. Base: mobile first ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      font-size: 1rem;          /* 16px, readable without zoom */
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--accent); }
+
+    .container {
+      width: 100%;
+      max-width: 60rem;         /* no fixed width = no sideways scroll */
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    section { padding: 3.5rem 0; }
+
+    h2 {
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== 3. Header ===== */
+    header {
+      border-bottom: 1px solid var(--surface);
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 4rem;
+    }
+    .logo { font-weight: 600; text-decoration: none; color: var(--text); }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      margin-left: 1rem;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ===== 4. Hero (first screen) ===== */
+    .hero { padding: 4rem 0 3.5rem; }
+    .hero .role {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 8vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hero .line {
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      max-width: 36rem;
+      margin-bottom: 2rem;
+    }
+    .hero .line strong { color: var(--accent); font-weight: 600; }
+
+    /* Buttons: 48px tall, easy to tap */
+    .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      min-height: 3rem;
+      padding: 0 1.4rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .btn-main { background: var(--accent); color: var(--bg); }
+    .btn-main:hover { background: var(--text); }
+    .btn-line { border: 1.5px solid var(--soft); color: var(--accent); }
+    .btn-line:hover { border-color: var(--accent); }
+
+    /* ===== 5. Project case study ===== */
+    .project {
+      background: #fff;
+      border: 1px solid var(--surface);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .project-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .project h3 { font-size: 1.5rem; font-weight: 600; }
+    .tag {
+      background: var(--surface);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.2rem 0.7rem;
+      border-radius: 1rem;
+    }
+    .project .summary { margin-bottom: 1.5rem; }
+
+    .car { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+    .car div {
+      border-left: 3px solid var(--soft);
+      padding-left: 1rem;
+    }
+    .car h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .skills span {
+      border: 1px solid var(--surface);
+      font-size: 0.85rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 1rem;
+    }
+
+    figure a { display: block; border: 1px solid var(--surface); border-radius: 0.75rem; overflow: hidden; }
+    figcaption { font-size: 0.9rem; margin-top: 0.75rem; }
+    figcaption small { display: block; color: var(--accent); margin-top: 0.25rem; }
+
+    /* ===== 6. About ===== */
+    .about p { max-width: 38rem; margin-bottom: 1rem; }
+
+    /* ===== 7. Contact ===== */
+    .contact { background: var(--surface); }
+    .contact p { margin-bottom: 1.5rem; }
+
+    footer { padding: 1.5rem 0; font-size: 0.85rem; }
+
+    /* ===== 8. Bigger screens: add space, keep it simple ===== */
+    @media (min-width: 48rem) {
+      section { padding: 5rem 0; }
+      .hero { padding: 7rem 0 5rem; }
+      .project { padding: 2.5rem; }
+      .car { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="#" class="logo">Haya A.</a>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- First screen: who, what, where next -->
+    <section class="hero">
+      <div class="container">
+        <p class="role">Software engineering student</p>
+        <h1>Haya Alothman</h1>
+        <p class="line">I turn real problems into <strong>clear designs</strong>, and I'm learning to build them for web and mobile.</p>
+        <div class="buttons">
+          <a href="#work" class="btn btn-main">See my work</a>
+          <a href="#contact" class="btn btn-line">Contact me</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="work">
+      <div class="container">
+        <h2>Work</h2>
+
+        <article class="project">
+          <div class="project-top">
+            <h3>Baqaya</h3>
+            <span class="tag">In progress</span>
+          </div>
+          <p class="summary">A platform that connects cafés with anyone who can reuse their spent coffee grounds.</p>
+
+          <div class="car">
+            <div>
+              <h4>Challenge</h4>
+              <p>Cafés lose budget on coffee grounds that end up in the trash, while farms, environmental projects and biochar makers could reuse them but have no easy way to find them.</p>
+            </div>
+            <div>
+              <h4>My role</h4>
+              <p>As team lead, I defined the project and its plan, compared alternative solutions, mapped the registration and offers events, and designed the system's class diagram.</p>
+            </div>
+            <div>
+              <h4>Result</h4>
+              <p>11 use cases documented. The design and documentation phases are complete, and development is next.</p>
+            </div>
+          </div>
+
+          <div class="skills">
+            <span>Requirements analysis</span>
+            <span>UML</span>
+            <span>Visual Paradigm</span>
+            <span>Team leadership</span>
+          </div>
+
+          <figure>
+            <a href="images/baqaya-class-diagram.webp" target="_blank" rel="noopener">
+              <img src="images/baqaya-class-diagram.webp" width="1418" height="1109"
+                   alt="Baqaya class diagram: User is the parent of Cafe, Administrator and Beneficiary. Cafes post Offers, Beneficiaries submit Requests on offers and pay Subscriptions, and Cafes earn EcoBadges.">
+            </a>
+            <figcaption>
+              Class diagram: 9 classes. Cafés, beneficiaries and admins share one User base. Cafés post offers, beneficiaries request them, and cafés earn eco-badges based on the kilograms they recycle.
+              <small>Tap the image to open it full size.</small>
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About</h2>
+        <!-- TODO: replace with 2 short lines from your LinkedIn About -->
+        <p>[About text goes here: what you care about, and what you're learning next.]</p>
+      </div>
+    </section>
+
+    <!-- Contact: one tap -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Let's talk</h2>
+        <p>Open to internships and training opportunities.</p>
+        <div class="buttons">
+          <a href="mailto:hayaaziz1423@gmail.com" class="btn btn-main">Email me</a>
+          <a href="https://github.com/Hyony07" class="btn btn-line" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/haya-aziz/" class="btn btn-line" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Haya Alothman</div>
+  </footer>
+
+</body>
+</html>
